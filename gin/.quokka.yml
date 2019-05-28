@@ -1,0 +1,49 @@
+name: "Go CLI"
+version: "0.1.0"
+description: "Generates a simple Go command line application"
+delimiters: ["{{", "}}"]
+variables:
+  name:
+    default: rendered
+    prompt: "Name:"
+    help: "The name of your project"
+  description:
+    prompt: "Description:"
+    help: "Description of the project, rendered in the Makefile and help command"
+  organization:
+    help: "Organization or username"
+    prompt: "Organization:"
+    required: true
+  gitserver:
+    prompt: "Git Server:"
+    default: "github.com"
+    help: "Git server"
+  license:
+    values: ["MIT", "Apache License 2.0", "GPL", "LGPL", "WTFPL", ""]
+    default: "MIT"
+    help: "License to be applied to the project. Select the last option if you don't want a license."
+    prompt: "License"
+  goreleaser:
+    confirm: true
+    prompt: "Enable goreleaser?"
+  docker:
+    confirm: true
+    prompt: "Add Dockerfile and dockerignore?"
+  prometheus:
+    confirm: true
+    prompt: "Add Prometheus instrumentation?"
+    variables:
+      grafana:
+        confirm: false
+        prompt: "Generate Grafana Dashboard?"
+  drone:
+    confirm: true
+    prompt: "Add drone config?"
+    variables:
+      telegram:
+        confirm: true
+        prompt: "Add Telegram notifications?"
+        variables:
+          chan:
+            prompt: "Channel ID or user ID?"
+            required: true

@@ -1,0 +1,6 @@
+---
+if: docker
+---
+{{ .name }}
+misc/
+vendor/
